@@ -2,7 +2,6 @@ package server
 
 import (
 	pb "../daysproto"
-	"fmt"
 	"golang.org/x/net/context"
 )
 
@@ -21,7 +20,6 @@ func (a *A) GetWeekDay(ctx context.Context, day *pb.Day) (*pb.DayResponse, error
 			dr.IsWeekDay = false
 		} else {
 			dr.IsWeekDay = false
-			err = fmt.Errorf("something's wrong with day: %v\n", *day)
 		}
 	}
 	return dr, err

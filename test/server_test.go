@@ -63,9 +63,9 @@ func TestStartServer(te *testing.T) {
 	t.startServer()
 	client := pb.NewGetWeekDayServiceClient(t.clientConn())
 	var day = &pb.Day{Day: pb.Day_Monday}
-	te.Logf("Monday0: %v\tIsWeekDay: %v\n", *day, getDays(client, day))
-	day = &pb.Day{Day: pb.Day_WeekDay(0)}
-	te.Logf("Monday1: %v\tIsWeekDay: %v\n", *day, getDays(client, day))
+	te.Logf("Monday0: %v\tIsWeekDay: %v\n", *day, *getDays(client, day))
+	day = &pb.Day{Day: pb.Day_WeekDay(5)}
+	te.Logf("Monday1: %v\tIsWeekDay: %v\n", *day, *getDays(client, day))
 	day = &pb.Day{Day: pb.Day_WeekDay(10000)}
-	te.Logf("Day between Sunday&Monday: %v\tIsWeekDay: %v\n", *day, getDays(client, day))
+	te.Logf("Expecting an error when WeekDay=10000: %v", *getDays(client, day))
 }
