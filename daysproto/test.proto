@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package weekDay;
+
+service GetWeekDayService {
+    rpc GetWeekDay (Day) returns (DayResponse){};
+}
+
+message Day {
+    enum WeekDay {
+        Monday = 0;
+        Tuesday = 1;
+        Thursday = 2;
+        Wensday = 3;
+        Friday = 4;
+        Saturday = 5;
+        Sunday = 6;
+    }
+    WeekDay day = 1;
+}
+
+message DayResponse {
+    bool isWeekDay = 1;
+}
